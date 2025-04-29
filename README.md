@@ -4,8 +4,6 @@ This project focuses on fine-tuning [Qwen/Qwen2.5](https://huggingface.co/Qwen) 
 For solving math problems, we can use pre-trained models like **Qwen2.5-7B-Instruct** or **Qwen/Qwen2.5-Math-7B-Instruct**.  
 For multiple-choice and Yes/No questions, we fine-tune **Qwen2.5-1.5B-Instruct**.
 
----
-
 ## Requirements
 
 Set up the environment with **conda**:
@@ -50,8 +48,6 @@ Run:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python finetune-classify.py
 ```
 
----
-
 ### 2. Multiple-Choice Fine-tuning
 
 - Script: `finetune-multiple-choice.py`
@@ -84,7 +80,6 @@ Final answer (Yes, No, A, B, C, etc.)
 - Provides interpretable and verifiable reasoning.
 - Reduces hallucination on complex questions.
 
----
 
 ## Inference
 
