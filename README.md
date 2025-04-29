@@ -19,7 +19,7 @@ pip install transformers datasets peft trl accelerate numpy
 ```
 
 The code will automatically download models from Hugging Face (no auth-token needed),  
-or you can manually download from [huggingface.co/Qwen](https://huggingface.co/Qwen) and 
+or you can manually download from [huggingface.co/Qwen](https://huggingface.co/Qwen).
 
 ---
 
@@ -30,7 +30,7 @@ or you can manually download from [huggingface.co/Qwen](https://huggingface.co/Q
 Optional models for math tasks:
 
 - [Qwen/Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
-- [Qwen/Qwen2.5-Math-7B-Instruct](](https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct/tree/main))
+- [Qwen/Qwen2.5-Math-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct/tree/main)
 
 ---
 
@@ -79,7 +79,7 @@ Final answer (Yes, No, A, B, C, etc.)
 </answer>
 ```
 
-**Benefits of CoT:**
+**Using CoT for:**
 - Improves logical thinking.
 - Provides interpretable and verifiable reasoning.
 - Reduces hallucination on complex questions.
