@@ -19,7 +19,17 @@ pip install transformers datasets peft trl accelerate numpy
 The code will automatically download models from Hugging Face (no auth-token needed),  
 or you can manually download from [huggingface.co/Qwen](https://huggingface.co/Qwen).
 
----
+## Project Structure
+
+| File                         | Description                                        |
+|-------------------------------|----------------------------------------------------|
+| `train_v1.json`               | Dataset in TRNS-AI challenage                      |
+| `solver-routing.py`           | Inference engine that selects models and generates chain-of-thought output. |
+| `finetune-classify.py`        | Fine-tuning script for Yes/No classification.       |
+| `finetune-multiple-choice.py` | Fine-tuning script for multiple-choice solving.     |
+| `/model/qwen-classify/`       | Fine-tuned classification model directory.          |
+| `/model/qwen-multiple-choice/`| Fine-tuned multiple-choice model directory.         |
+
 
 ## Pre-trained Models Used
 
@@ -30,7 +40,6 @@ Optional models for math tasks:
 - [Qwen/Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
 - [Qwen/Qwen2.5-Math-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct/tree/main)
 
----
 
 ## Fine-tuning Instructions
 
@@ -60,7 +69,6 @@ Run:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python finetune-multiple-choice.py
 ```
 
----
 
 ## Chain of Thought (CoT) Format
 
@@ -93,19 +101,7 @@ It will:
 - Automatically select the correct model (classification or multiple-choice),
 - Generate chain-of-thought reasoning and a final answer.
 
----
 
-## Project Structure
-
-| File                         | Description                                        |
-|-------------------------------|----------------------------------------------------|
-| `solver-routing.py`           | Inference engine that selects models and generates chain-of-thought output. |
-| `finetune-classify.py`        | Fine-tuning script for Yes/No classification.       |
-| `finetune-multiple-choice.py` | Fine-tuning script for multiple-choice solving.     |
-| `/model/qwen-classify/`       | Fine-tuned classification model directory.          |
-| `/model/qwen-multiple-choice/`| Fine-tuned multiple-choice model directory.         |
-
----
 
 ## Notes
 
@@ -113,7 +109,6 @@ It will:
 - Supports multi-GPU training (minor setup change needed).
 - Preprocessing automatically formats input prompts into Chain of Thought style.
 
----
 
 ## Credits
 
@@ -121,4 +116,3 @@ It will:
 - Chain of Thought prompting idea from [Wei et al., 2022](https://arxiv.org/abs/2201.11903).
 - LoRA fine-tuning method based on [Hu et al., 2021](https://arxiv.org/abs/2106.09685).
 
----
