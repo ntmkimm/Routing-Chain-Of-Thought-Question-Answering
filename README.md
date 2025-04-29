@@ -88,7 +88,7 @@ Final answer (Yes, No, A, B, C, etc.)
 After fine-tuning, run the inference script:
 
 ```bash
-python solver-routing.py
+CUDA_VISIBLE_DEVICES=0,1,2,3 python solver-routing.py
 ```
 
 Automatically select the correct model (classification or multiple-choice or math solving),
