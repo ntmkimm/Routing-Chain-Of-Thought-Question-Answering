@@ -29,11 +29,12 @@ or you can manually download from [huggingface.co/Qwen](https://huggingface.co/Q
 | `finetune-multiple-choice.py` | Fine-tuning script for multiple-choice solving.     |
 | `/model/qwen-classify/`       | Fine-tuned classification model directory.          |
 | `/model/qwen-multiple-choice/`| Fine-tuned multiple-choice model directory.         |
+| `/output`                     | Output directory for inference.                     |
 
 
 ## Pre-trained Models Used
 
-- **Base Model**: [Qwen/Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) (for fine-tuning)
+**Base Model**: [Qwen/Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) (for fine-tuning)
 
 Optional models for math tasks:
 
@@ -45,11 +46,8 @@ Optional models for math tasks:
 
 We use **LoRA (Low-Rank Adaptation)** for efficient fine-tuning.
 
-### 1. Yes/No Classification Fine-tuning
-
-- Script: `finetune-classify.py`
-- Task: Classify logical Yes/No questions.
-- Output directory: `./model/qwen-classify/`
+### 1. Yes/No Classification Fine-tuning with CoT Reasoning
+Output directory: `./model/qwen-classify/`
 
 Run:
 
@@ -57,11 +55,8 @@ Run:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python finetune-classify.py
 ```
 
-### 2. Multiple-Choice Fine-tuning
-
-- Script: `finetune-multiple-choice.py`
-- Task: Solve multiple-choice questions (A, B, C, D options) with CoT reasoning.
-- Output directory: `./model/qwen-multiple-choice/`
+### 2. Multiple-Choice Fine-tuning with CoT Reasoning
+Output directory: `./model/qwen-multiple-choice/`
 
 Run:
 
@@ -70,9 +65,13 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python finetune-multiple-choice.py
 ```
 
 
-## Chain of Thought (CoT) Format
+## Chain of Thought (CoT)
 
-The model is trained to output:
+Improves logical thinking.
+Provides interpretable and verifiable reasoning.
+Reduces hallucination on complex questions.
+
+**Format**
 
 ```text
 <reasoning>
@@ -83,11 +82,6 @@ Final answer (Yes, No, A, B, C, etc.)
 </answer>
 ```
 
-**Using CoT for:**
-- Improves logical thinking.
-- Provides interpretable and verifiable reasoning.
-- Reduces hallucination on complex questions.
-
 
 ## Inference
 
@@ -97,11 +91,9 @@ After fine-tuning, run the inference script:
 python solver-routing.py
 ```
 
-It will:
-- Automatically select the correct model (classification or multiple-choice),
-- Generate chain-of-thought reasoning and a final answer.
-
-
+Automatically select the correct model (classification or multiple-choice or math solving),
+Generate chain-of-thought reasoning and final answers save to `/output`.
+**Inputs** for inferencing one sample are **a list of premises** and **a list of questions** to answer based on the provided premises.
 
 ## Notes
 
